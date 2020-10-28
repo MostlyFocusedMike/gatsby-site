@@ -6,5 +6,27 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: [],
+  plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/markdown-pages`,
+        name: `markdown-pages`,
+      },
+    },
+    {
+        resolve: `gatsby-transformer-remark`,
+        options: {
+          plugins: [
+            {
+              resolve: `gatsby-remark-highlight-code`,
+              options: {
+                terminal: 'carbon',
+                theme: 'blackboard'
+              }
+            },
+          ],
+        },
+      },
+  ]
 }
