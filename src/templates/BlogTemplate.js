@@ -8,11 +8,19 @@ export default function Template({
 }) {
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
+  console.log('frontmatter: ', frontmatter);
+  console.log('html: ', html);
   return (
     <div className="blog-post-container">
       <div className="blog-post">
         <h1>{frontmatter.title}</h1>
-        <h2>{frontmatter.date}</h2>
+        <p>Tags</p>
+        <ul>
+            {
+                frontmatter.tags.map(tag => <li key={tag}>{tag}</li>)
+            }
+        </ul>
+
         <div
           className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: html }}
@@ -22,6 +30,7 @@ export default function Template({
   )
 }
 
+// You can add whatever you want in the ------ ------- section of the markdown if you just query it
 export const pageQuery = graphql`
   query($slug: String!) {
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
@@ -30,6 +39,8 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         slug
         title
+        tags
+        test
       }
     }
   }

@@ -1,0 +1,27 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
+/* This is what the code things look like */
+.hydrated {
+    visibility: inherit;
+    width: 65%;
+    min-width: 33rem;
+    margin: 1rem auto;
+}
+
+p code{
+    color: green;
+    background: #DDD;
+    padding: 0.05rem 0.2rem;
+    font-style: italic;
+}
+iframe {
+    border: none;
+    width: 85%;
+    height: 60rem;
+    margin: 1rem auto;
+    display: block;
+
+}
